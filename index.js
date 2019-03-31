@@ -25,7 +25,9 @@ const updateShow = async(req, res) => {
 }
 // This is how you delete shows // this doesn't work yet
 const deleteShow = async (req,res) => {
-    const results = await Shows.remove({ _id: req.params.id});
+    console.log('Delete is running')
+    console.log(req.params.id)
+    const results = await Shows.remove({ _id: req.params.id  });
     return send(res, 200, results)
 }
 // this is the show creator // this works great
@@ -42,8 +44,8 @@ const notfound = (req, res) => send(
 module.exports =  cors(
         router(
             get('/Shows', getShows), // this works
-            get('/Shows/:id', getShow), // this works
             post('/Shows', addShow), //this works 
+            get('/Shows/:id', getShow), // this works
             put('/Shows/:id', updateShow),  // this works
             del('Shows/:id', deleteShow), // this doesn't work
             get('/*', notfound) // flawless

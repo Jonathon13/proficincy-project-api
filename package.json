@@ -23,5 +23,6 @@
     "microrouter": "^3.1.3",
     "monk": "^6.0.6",
     "redux": "^4.0.1"
-  }
+  },
+  "devDependencies": {}
 }
