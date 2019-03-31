@@ -9,6 +9,7 @@ const Shows = db.get('shows')
 const getShows = async(req, res) => {
     const results = await Shows.find({});
     await Shows.find({})
+    console.log('got shows')
     return send ( res, 200, results)
 }
 //this is how you see a single show // just decided to work randomly
@@ -24,7 +25,7 @@ const updateShow = async(req, res) => {
     return send(res, 200, results)
 }
 // This is how you delete shows // this doesn't work yet
-const deleteShow = async (req,res) => {
+const DeleteShow = async (req,res) => {
     console.log('Delete is running')
     console.log(req.params.id)
     const results = await Shows.remove({ _id: req.params.id  });
@@ -47,7 +48,7 @@ module.exports =  cors(
             post('/Shows', addShow), //this works 
             get('/Shows/:id', getShow), // this works
             put('/Shows/:id', updateShow),  // this works
-            del('Shows/:id', deleteShow), // this doesn't work
+            del('/Shows/:id', DeleteShow), // this doesn't work
             get('/*', notfound) // flawless
         )
 )
